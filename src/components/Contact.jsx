@@ -5,6 +5,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { send, sendHover } from "../assets";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const formRef = useRef();
@@ -43,8 +44,13 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
+          Swal.fire({
+            title: "Email sent!",
+            text: "Thank you. I will get back to you as soon as possible.",
+            icon: "success",
+            timer: 1500,
+            timerProgressBar: true,
+          });
           setForm({
             name: "",
             email: "",
